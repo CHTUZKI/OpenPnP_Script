@@ -1,0 +1,5 @@
+*.log
+temp_images/
+__pycache__/
+*.pyc
+*.pyo

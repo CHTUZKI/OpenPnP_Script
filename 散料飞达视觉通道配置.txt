@@ -1,0 +1,15 @@
+<cv-pipeline>
+   <stages>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ImageCapture" name="capture" enabled="true" default-light="true" settle-option="Settle" count="1"/>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ImageWriteDebug" name="debug_capture" enabled="true" prefix="loosepart_capture_" suffix=".png"/>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ConvertColor" name="gray" enabled="true" conversion="Bgr2Gray"/>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ImageWriteDebug" name="debug_gray" enabled="true" prefix="loosepart_gray_" suffix=".png"/>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ScriptRun" name="results" enabled="true" file="C:\Users\17299\.openpnp2\openPNP_Script\BulkFeederScript.js" args="yolo_confidence=0.25"/>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ImageWriteDebug" name="debug_script_result" enabled="true" prefix="loosepart_script_" suffix=".png"/>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ImageRecall" name="recall2" enabled="true" image-stage-name="capture"/>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.DrawRotatedRects" name="draw_results" enabled="true" rotated-rects-stage-name="results" thickness="2" draw-rect-center="true" rect-center-radius="3" show-orientation="true">
+         <color r="51" g="255" b="51" a="255"/>
+      </cv-stage>
+      <cv-stage class="org.openpnp.vision.pipeline.stages.ImageWriteDebug" name="debug_result" enabled="true" prefix="loosepart_result_" suffix=".png"/>
+   </stages>
+</cv-pipeline>

@@ -1,0 +1,21 @@
+# OpenPnP YOLO 散料飞达脚本依赖
+# Python 依赖包列表
+# 
+# 安装方法：
+#   pip install -r requirements.txt
+# 
+# 或者单独安装：
+#   pip install ultralytics opencv-python numpy
+
+# YOLOv8 推理库（必需）
+ultralytics>=8.0.0
+
+# 图像处理库（必需）
+opencv-python>=4.5.0
+numpy>=1.19.0
+
+# 注意：
+# - Python 版本要求：Python 3.7 或更高版本
+# - 如果使用 GPU 加速，还需要安装 PyTorch（ultralytics 会自动安装，但可能需要额外配置 CUDA）
+# - cleanup_logs.py 只使用 Python 标准库，无需额外依赖
+# - BulkFeederScript.js 运行在 OpenPnP 的 Rhino JavaScript 引擎中，无需 Python 依赖
