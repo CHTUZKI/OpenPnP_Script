@@ -32,7 +32,10 @@ CLEANUP_TARGETS = [
     OPENPNP_ROOT / "org.openpnp.vision.pipeline.stages.ImageWriteDebug",
 ]
 
-# 可选：也清理 temp_images
+# temp_images 中保留的教程截图（README 图文快速上手用）
+GUIDE_IMAGE_NAMES = {f"{i}.png" for i in range(1, 10)}
+
+# 可选：也清理 temp_images（跳过 1.png–9.png 教程图）
 OPTIONAL_CLEANUP = [
     SCRIPT_DIR / "temp_images",
 ]
@@ -86,6 +89,8 @@ def delete_directory_contents(dir_path):
         
         for item in dir_path.iterdir():
             try:
+                if item.name in GUIDE_IMAGE_NAMES or item.name == ".gitkeep":
+                    continue
                 if item == openpnp_log_file:
                     # 特殊处理 OpenPnP.log：只清空内容，不删除文件
                     if clear_file_contents(item):
@@ -145,13 +150,11 @@ def main():
                 if delete_file(item):
                     total_deleted += 1
             elif item.is_dir():
-                import shutil
-                try:
-                    shutil.rmtree(item)
-                    print(f"✓ 已删除文件夹: {item}")
-                    total_deleted += 1
-                except Exception as e:
-                    print(f"✗ 删除文件夹失败 {item}: {e}")
+                print(f"\n处理: {item}（保留教程截图 {', '.join(sorted(GUIDE_IMAGE_NAMES))}）")
+                count = delete_directory_contents(item)
+                total_deleted += count
+                if count > 0:
+                    print(f"  共删除 {count} 个项目")
     
     # 总结
     print("\n" + "=" * 60)

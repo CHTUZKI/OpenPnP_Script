@@ -1,5 +1,7 @@
 *.log
-temp_images/
+temp_images/*
+!temp_images/.gitkeep
+!temp_images/[1-9].png
 __pycache__/
 *.pyc
 *.pyo
