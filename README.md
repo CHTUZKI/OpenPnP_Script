@@ -1,5 +1,7 @@
 # OpenPnP YOLO 散料飞达
 
+**提示：如果你感觉各方面都配置正确的但是还是无法识别到元件，请记得运行 `reset_yolo_service.py` 来杀掉内存中旧的服务线程，并且尝试重启 OpenPnP 软件。**
+
 基于 YOLOv8 实例分割的散料飞达（`ReferenceLoosePartFeeder`）视觉识别方案，集成到 OpenPnP 标准飞达视觉管道中。
 
 ---
