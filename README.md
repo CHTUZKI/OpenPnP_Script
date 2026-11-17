@@ -4,6 +4,8 @@
 
 基于 YOLOv8 实例分割的散料飞达（`ReferenceLoosePartFeeder`）视觉识别方案，集成到 OpenPnP 标准飞达视觉管道中。
 
+B站视频演示
+https://www.bilibili.com/video/BV1ghEB63ET5/?spm_id_from=333.1007.0.0&vd_source=ad73ee29e8a17f07c7406d3ff130a362
 ---
 
 ## 目录结构
